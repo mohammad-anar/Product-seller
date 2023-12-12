@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 const PopularProducts = () => {
   const [rating, setRating] = useState(4);
   return (
-    <div className="min-h-[60vh] my-12">
+    <div className="min-h-[60vh] my-12 mb-0">
       <div className="my-12 flex items-center justify-between pr-4">
         <h2 className="text-3xl font-medium text-black">Popular Products</h2>
         <Link to="/products">

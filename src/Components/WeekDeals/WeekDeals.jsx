@@ -18,7 +18,7 @@ import { useState } from "react";
 const WeekDeals = () => {
   const [rating, setRating] = useState(4);
   return (
-    <div className="min-h-[60vh] my-12">
+    <div className="min-h-[60vh] my-12 mb-0">
       <div className="my-12">
         <h2 className="text-3xl font-medium text-red-600">
           This Week&apos;s deals
