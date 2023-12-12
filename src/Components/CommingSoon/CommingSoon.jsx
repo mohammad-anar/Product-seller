@@ -7,7 +7,7 @@ const CommingSoon = () => {
                 <p className="uppercase text-lg text-white"> 13 Nov - 25 Dec</p>
                 <h2 className="text-3xl font-semibold text-white drop-shadow-xl">The wait is on iPhone 14 max pro</h2>
                 <h2 className="text-2xl font-bold text-red-600">$ 999.00</h2>
-                <button className="capitalize btn duration-500 bg-red-600  outline-none border-0 rounded-full px-6 text-white">Shop now</button>
+                <button className="capitalize btn duration-500 bg-red-600  outline-none border-0 rounded-full px-10 text-lg text-white">Shop now</button>
             </div>
         </div>
     );

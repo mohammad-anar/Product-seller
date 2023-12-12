@@ -33,4 +33,30 @@
     height: 100%;
     object-fit: cover;
   }
+  @media only screen and (max-width: 640px) {
+    .swiper {
+      width: 100%;
+      height: 500px;
+    }
+  }
+  
+  @media only screen and (max-width: 786px) {
+    .swiper {
+      width: 100%;
+      height: 400px;
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    .swiper {
+      width: 100%;
+      height: 200px;
+    }
+  }
+  
+  @media only screen and (max-width: 1280px) {
+    .swiper {
+      width: 100%;
+      height: 450px;
+    }
+  }
   

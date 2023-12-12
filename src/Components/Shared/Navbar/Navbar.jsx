@@ -35,9 +35,9 @@ const Navbar = () => {
         {/* navbar logo */}
         <Logo/>
 
-        <div className=" w-full hidden lg:flex items-center justify-end gap-40">
+        <div className=" w-full items-center justify-end gap-40">
           {/* navbar links  */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             {/* search bar here */}
             <SearchBar />
           </div>

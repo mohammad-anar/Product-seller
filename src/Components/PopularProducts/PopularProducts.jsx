@@ -21,10 +21,10 @@ const PopularProducts = () => {
   const [rating, setRating] = useState(4);
   return (
     <div className="min-h-[60vh] my-12 mb-0">
-      <div className="my-12 flex items-center justify-between pr-4">
+      <div className="my-12 flex flex-col sm:flex-row items-center justify-between pr-4">
         <h2 className="text-3xl font-medium text-black">Popular Products</h2>
         <Link to="/products">
-          <button className="flex text-lg items-center gap-2 hover:text-red-600 duration-300">
+          <button className="flex text-lg mt-4 sm:mt-0 items-center gap-2 hover:text-red-600 duration-300">
             View all products <FaArrowRightLong className="text-red-600" />
           </button>
         </Link>
