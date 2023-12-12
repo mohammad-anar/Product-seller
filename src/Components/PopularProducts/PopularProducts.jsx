@@ -1,11 +1,12 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./deals.css";
+import "./../WeekDeals/deals.css";
 
 // Rating
 import { Rating } from "@smastrom/react-rating";
@@ -14,15 +15,19 @@ import "@smastrom/react-rating/style.css";
 // import required modules
 import { Pagination } from "swiper/modules";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const WeekDeals = () => {
+const PopularProducts = () => {
   const [rating, setRating] = useState(4);
   return (
     <div className="min-h-[60vh] my-12">
-      <div className="my-12">
-        <h2 className="text-3xl font-medium text-red-600">
-          This Week&apos;s deals
-        </h2>
+      <div className="my-12 flex items-center justify-between pr-4">
+        <h2 className="text-3xl font-medium text-black">Popular Products</h2>
+        <Link to="/products">
+          <button className="flex text-lg items-center gap-2 hover:text-red-600 duration-300">
+            View all products <FaArrowRightLong className="text-red-600" />
+          </button>
+        </Link>
       </div>
       <Swiper
         slidesPerView={1}
@@ -67,7 +72,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -89,7 +96,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -111,7 +120,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -133,7 +144,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -155,7 +168,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -177,7 +192,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -199,7 +216,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -221,7 +240,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -243,7 +264,9 @@ const WeekDeals = () => {
                 onChange={setRating}
               />
               <div className="space-y-1">
-                <p className="text-lg text-black font-medium">Drupod Pro White</p>
+                <p className="text-lg text-black font-medium">
+                  Drupod Pro White
+                </p>
                 <h2 className="text-red-600 -mt-6 font-bold">$ 290.00</h2>
               </div>
             </div>
@@ -254,4 +277,4 @@ const WeekDeals = () => {
   );
 };
 
-export default WeekDeals;
+export default PopularProducts;

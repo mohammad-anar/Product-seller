@@ -1,4 +1,6 @@
 import Banner from "../../Components/Banner/Banner";
+import CommingSoon from "../../Components/CommingSoon/CommingSoon";
+import PopularProducts from "../../Components/PopularProducts/PopularProducts";
 import WeekDeals from "../../Components/WeekDeals/WeekDeals";
 
 const Home = () => {
@@ -12,6 +14,10 @@ const Home = () => {
       <div>
         <WeekDeals />
       </div>
+      {/* comming soon  */}
+      <CommingSoon/>
+      {/* popular products  */}
+      <PopularProducts/>
     </div>
   );
 };
