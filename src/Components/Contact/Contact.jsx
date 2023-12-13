@@ -4,9 +4,9 @@ import { FaMapLocationDot } from "react-icons/fa6";
 
 const Contact = () => {
   return (
-    <div className="my-12 flex flex-col lg:flex-row items-center gap-20 ">
+    <div className="my-12 flex flex-col lg:flex-row items-center gap-20">
     {/* form  */}
-      <div className="bg-white rounded-xl p-12 py-16 basis-3/5">
+      <div className="bg-white rounded-xl p-12 py-16 basis-3/5 shadow">
         <div>
           <h2 className="text-3xl font-medium text-black mb-8 text-center">
             Ask anything here
