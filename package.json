@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@makotot/paginated": "^1.0.1",
     "@smastrom/react-rating": "^1.4.0",
     "keen-slider": "^6.8.6",
     "localforage": "^1.10.0",
