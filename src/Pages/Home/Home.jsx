@@ -1,7 +1,6 @@
 import Banner from "../../Components/Banner/Banner";
 import CommingSoon from "../../Components/CommingSoon/CommingSoon";
 import Contact from "../../Components/Contact/Contact";
-import Footer from "../../Components/Footer/Footer";
 import PopularProducts from "../../Components/PopularProducts/PopularProducts";
 import Review from "../../Components/Review/Review";
 import WeekDeals from "../../Components/WeekDeals/WeekDeals";
@@ -27,7 +26,6 @@ const Home = () => {
         {/* contact  */}
         <Contact />
       </div>
-      <Footer />
     </>
   );
 };

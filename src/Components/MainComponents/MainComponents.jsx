@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 const MainComponents = () => {
   return (
@@ -11,6 +12,7 @@ const MainComponents = () => {
           <Navbar/>
           {/* Page content here */}
           <Outlet/>
+          <Footer/>
         </div>
         <div className="drawer-side">
           <label

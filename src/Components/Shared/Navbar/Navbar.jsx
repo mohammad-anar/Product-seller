@@ -1,4 +1,3 @@
-
 import Logo from "../Logo/Logo";
 import Icons from "./Icons/Icons";
 import CategoryDropdown from "./Navlinks/CategoryDropdown";
@@ -7,10 +6,14 @@ import SearchBar from "./SearchBar";
 import { FaChevronDown } from "react-icons/fa";
 import { FaBars } from "react-icons/fa6";
 
+import { useState } from "react";
+import LIghtDark from "../LIghtDark";
+
 const Navbar = () => {
+  const [click, setClick] = useState(false);
   return (
     <>
-      <div className="w-full navbar bg-white min-h-[100px] border-b">
+      <div className="w-full navbar bg-white min-h-[100px] border-b px-2 pr-6">
         <div className="flex-none lg:hidden">
           <label
             htmlFor="my-drawer-3"
@@ -33,7 +36,12 @@ const Navbar = () => {
           </label>
         </div>
         {/* navbar logo */}
-        <Logo/>
+        <div>
+          <Logo />
+          <div className="hidden sm:block">
+          <LIghtDark click={click} setClick={setClick}/>
+          </div>
+        </div>
 
         <div className=" w-full items-center justify-end gap-40">
           {/* navbar links  */}
@@ -53,25 +61,27 @@ const Navbar = () => {
       <div className="w-full  p-4 bg-white border-b hidden lg:block ">
         <div className="flex items-center justify-between">
           <div className="dropdown dropdown-hover w-[300px]">
-            <button className=" bg-red-600 p-4 px-6 rounded-md rounded-b-none text-white font-bold text-lg flex items-center gap-2">
+            <button className=" bg-red-600 w-[230px] p-4 px-6 rounded-md text-white font-bold text-lg flex items-center gap-2">
               <FaBars /> All Categories
               <FaChevronDown />
             </button>
             <div
               tabIndex={0}
-              className=" dropdown-content z-[1] delay-200 duration-1000 bg-white border-red-600 border-2 w-[218px] "
+              className=" dropdown-content z-[1] delay-200 duration-1000 bg-white -mt-1 border-red-600 border-2 w-[230px] "
             >
               {/* dropdown content  */}
-              <CategoryDropdown/>
+              <CategoryDropdown />
             </div>
           </div>
           {/* navbar logo */}
           <div className="">
-            <Navlinks/>
+            <Navlinks />
           </div>
 
           <div className="text-lg">
-          <h2><span className="font-medium">Hotline:</span> +94 345 435</h2>
+            <h2>
+              <span className="font-medium">Hotline:</span> +94 345 435
+            </h2>
           </div>
         </div>
       </div>

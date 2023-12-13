@@ -15,7 +15,7 @@ const Icons = () => {
           }
         >
           <p className="cursor-pointer">
-            <GrFavorite size={25} />
+            <GrFavorite size={25} className="hover:text-red-600"  />
           </p>
         </NavLink>
       </div>
@@ -32,7 +32,7 @@ const Icons = () => {
             className="cursor-pointer tooltip tooltip-bottom tooltip-error relative"
             data-tip="cart"
           >
-            <FaOpencart size={25} />
+            <FaOpencart size={25} className="hover:text-red-600" />
             <div className="badge bg-red-600 text-white ml-px -mt-2 absolute">
               9
             </div>
@@ -48,7 +48,7 @@ const Icons = () => {
           }
         >
           <p className="cursor-pointer">
-            <LuUser2 size={25} />
+            <LuUser2 size={25} className="hover:text-red-600" />
           </p>
           <div
             tabIndex={0}
