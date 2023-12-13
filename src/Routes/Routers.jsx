@@ -4,6 +4,11 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/Signup";
+import Products from "../Pages/Products/Products";
+import About from "../Pages/About/About";
+import Faq from "../Pages/FAQ/FAQ";
+import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
+import Contact from "../Pages/Contact/Contact";
 
 const Routers = createBrowserRouter([
     {
@@ -16,8 +21,28 @@ const Routers = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "electronics",
-                element: <Home/>
+                path: "products",
+                element: <Products/>
+            },
+            {
+                path: "products",
+                element: <Products/>
+            },
+            {
+                path: "about",
+                element: <About/>
+            },
+            {
+                path: "contact",
+                element: <Contact/>
+            },
+            {
+                path: "fa&q",
+                element: <Faq/>
+            },
+            {
+                path: "privacy-policy",
+                element: <PrivacyPolicy/>
             },
             {
                 path: "login",

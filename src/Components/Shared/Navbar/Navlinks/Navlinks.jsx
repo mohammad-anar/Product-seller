@@ -20,18 +20,22 @@ const Navlinks = () => {
       {/* Electronics  */}
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
         <NavLink
-          to="/electronics"
+          to="/products"
           tabIndex={0}
           role="button"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "" : ""
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-red-600 flex gap-1 items-center"
+              : " flex gap-1 items-center"
           }
         >
           Electronics
+          <p className="mt-px">
+            <FaChevronDown />
+          </p>
         </NavLink>
-        <p className="mt-1">
-          <FaChevronDown />
-        </p>
         <div
           tabIndex={0}
           className=" dropdown-content z-[1] mt-[282px]  menu p-4 px-6 shadow-lg bg-white rounded-none  w-[35vw]"
@@ -55,14 +59,15 @@ const Navlinks = () => {
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
         <NavLink
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "" : ""
+            isPending ? "pending" : isActive ? "flex gap-1 items-center" : "flex gap-1 items-center"
           }
         >
           Pages
+          <p className="mt-1">
+            <FaChevronDown />
+          </p>
         </NavLink>
-        <p className="mt-1">
-          <FaChevronDown />
-        </p>
+
         <div
           tabIndex={0}
           className=" dropdown-content z-[1] mt-[258px]  menu px-6 py-6 shadow-lg bg-white rounded-none  w-[10vw]"
@@ -71,17 +76,7 @@ const Navlinks = () => {
           <PagesDropdown />
         </div>
       </div>
-      {/* contact  */}
-      <div className="text-base text-black font-medium">
-        <NavLink
-          to="/contact"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600 underline" : ""
-          }
-        >
-          Contact
-        </NavLink>
-      </div>
+      
     </div>
   );
 };
