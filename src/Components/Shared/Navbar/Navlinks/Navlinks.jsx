@@ -24,7 +24,7 @@ const Navlinks = () => {
           tabIndex={0}
           role="button"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600 underline" : ""
+            isPending ? "pending" : isActive ? "" : ""
           }
         >
           Electronics
@@ -54,9 +54,8 @@ const Navlinks = () => {
       {/* pages  */}
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
         <NavLink
-          to="/pages"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-600 underline" : ""
+            isPending ? "pending" : isActive ? "" : ""
           }
         >
           Pages
