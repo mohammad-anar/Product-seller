@@ -43,7 +43,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className=" w-full items-center justify-end gap-40">
+        <div className=" w-full items-center justify-end gap-20 xl:gap-36">
           {/* navbar links  */}
           <div className="hidden lg:block">
             {/* search bar here */}
