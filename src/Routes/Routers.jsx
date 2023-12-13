@@ -9,6 +9,7 @@ import About from "../Pages/About/About";
 import Faq from "../Pages/FAQ/FAQ";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Contact from "../Pages/Contact/Contact";
+import Blog from "../Pages/Blog/Blog";
 
 const Routers = createBrowserRouter([
     {
@@ -25,8 +26,8 @@ const Routers = createBrowserRouter([
                 element: <Products/>
             },
             {
-                path: "products",
-                element: <Products/>
+                path: "blog",
+                element: <Blog/>
             },
             {
                 path: "about",
