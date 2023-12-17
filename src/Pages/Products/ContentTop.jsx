@@ -3,18 +3,18 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import SortSearchBar from "./SortSearchBar";
 import { useState } from "react";
 
-const ContentTop = () => {
+const ContentTop = ({setSortCart}) => {
   const [isCard, setIsCard] = useState(true);
   return (
     <div className="flex flex-col md:flex-row border p-6 py-8 items-center justify-between space-y-5 lg:space-y-0">
       <div className="flex items-center gap-2 text-gray-700">
-        <span onDoubleClick={() => setIsCard(true)}>
+        <span onClick={() => {setIsCard(true);setSortCart(true)}}>
           <TfiLayoutGrid3Alt
             className={`${isCard ? "text-red-600" : ""}`}
             size={18}
           />
         </span>
-        <span onDoubleClick={() => setIsCard(false)}>
+        <span onClick={() => {setIsCard(false);setSortCart(false)}}>
           <TfiMenuAlt
             className={`${!isCard ? "text-red-600" : ""}`}
             size={20}

@@ -40,7 +40,7 @@ const Icons = () => {
         </NavLink>
       </div>
       <div className="dropdown dropdown-end text-base relative text-black font-medium flex items-center gap-1">
-        <NavLink
+        <div
           tabIndex={0}
           role="button"
           className={({ isActive, isPending }) =>
@@ -63,7 +63,7 @@ const Icons = () => {
               </h2>
             </Link>
           </div>
-        </NavLink>
+        </div>
       </div>
     </div>
   );
