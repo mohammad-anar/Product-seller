@@ -4,17 +4,21 @@ import Loader from "../../Components/Shared/Loader/Loader";
 
 const Carts = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: products, isLoading } = useQuery({
+  const { data: products, isLoading} = useQuery({
     queryKey: ["carts"],
     queryFn: async () => {
       const res = await axiosSecure.get("/carts");
       return res;
     },
   });
-  console.log(products?.data);
+//   console.log(products?.data?.data);
+const handleDelete = (id) => {
+    console.log(id);
+    axiosSecure.delete("/carts", {id})
+}
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold md:text-2xl text-red-600">
+      <h2 className="text-xl font-semibold md:text-2xl text-red-600 text-center my-12 mt-6">
         Your Shopping Cart
       </h2>
       {isLoading ? (
@@ -25,10 +29,10 @@ const Carts = () => {
         <div>
           {
             <div className="overflow-x-auto hidden md:block">
-              <table className="table border border-gray-400">
+              <table className="table border border-gray-400 text-center">
                 {/* head */}
                 <thead>
-                  <tr className="text-base text-black border-gray-400 h-20">
+                  <tr className="text-lg text-black border-gray-400 h-20">
                     <th
                       colSpan={2}
                       className="border-r border-gray-400 text-center"
@@ -42,7 +46,7 @@ const Carts = () => {
                 </thead>
                 <tbody className="text-sm">
                   {/* row 1 */}
-                  {products?.data?.map((product) => (
+                  {products?.data?.data?.map((product) => (
                     <tr key={product._id} className="border border-gray-400">
                       <td className="border-r border-gray-400 w-48 p-6">
                         <div className=" w-full">
@@ -56,7 +60,7 @@ const Carts = () => {
                       <td className="border-r border-gray-400 ">
                         <div>
                           <div className="font-bold">
-                            {product?.product_name}
+                            <h2 className="text-center text-base">{product?.product_name}</h2>
                           </div>
                         </div>
                       </td>
@@ -67,8 +71,11 @@ const Carts = () => {
                       <td className="border-r border-gray-400">
                         <h2 className="text-center">{product?.quantity}</h2>
                       </td>
+                      <td className="border-r border-gray-400">
+                        <h2 className="text-center">$ {(product?.price * (product?.quantity || 1)).toFixed(2)}</h2>
+                      </td>
                       <td>
-                        <h2>$ {product?.price * (product?.quantity || 1)}</h2>
+                        <button onClick={() => handleDelete(product._id)} className=" rounded-full border-2 w-12 h-12 text-gray-400 hover:border-0 hover:text-white hover:bg-red-600 duration-300">X</button>
                       </td>
                     </tr>
                   ))}

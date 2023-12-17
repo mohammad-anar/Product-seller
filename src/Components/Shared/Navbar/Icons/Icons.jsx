@@ -2,7 +2,20 @@ import { GrFavorite } from "react-icons/gr";
 import { FaOpencart } from "react-icons/fa";
 import { LuUser2 } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure/axiosSecure";
 const Icons = () => {
+  const axiosSecure = useAxiosSecure();
+  const { data: products, isLoading} = useQuery({
+    queryKey: ["carts"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/carts");
+      return res;
+    },
+  });
+  const quantity = products?.data?.data?.reduce((total, current) => {
+      return total = total + current?.quantity
+  }, 0 )
   return (
     <div className="flex items-center gap-8 text-2xl">
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
@@ -33,8 +46,8 @@ const Icons = () => {
             data-tip="cart"
           >
             <FaOpencart size={25} className="hover:text-red-600" />
-            <div className="badge bg-red-600 text-white ml-px -mt-2 absolute">
-              9
+            <div className="badge bg-red-600 text-white ml-px -mt-1 absolute">
+              {isLoading? "..." :<span>{quantity}</span>}
             </div>
           </p>
         </NavLink>
