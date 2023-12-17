@@ -1,21 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure/axiosSecure";
 import Loader from "../../Components/Shared/Loader/Loader";
+import toast from "react-hot-toast";
 
 const Carts = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: products, isLoading} = useQuery({
+  const {
+    data: products,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["carts"],
     queryFn: async () => {
       const res = await axiosSecure.get("/carts");
       return res;
     },
   });
-//   console.log(products?.data?.data);
-const handleDelete = (id) => {
-    console.log(id);
-    axiosSecure.delete("/carts", {id})
-}
+  const handleDelete = (id) => {
+    axiosSecure
+      .delete(`/carts/${id}`)
+      .then((res) => {
+        if (res.data?.deletedCount === 1) {
+          refetch();
+          toast.success(`deleted 🔥`);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold md:text-2xl text-red-600 text-center my-12 mt-6">
@@ -60,7 +71,9 @@ const handleDelete = (id) => {
                       <td className="border-r border-gray-400 ">
                         <div>
                           <div className="font-bold">
-                            <h2 className="text-center text-base">{product?.product_name}</h2>
+                            <h2 className="text-center text-base">
+                              {product?.product_name}
+                            </h2>
                           </div>
                         </div>
                       </td>
@@ -72,10 +85,20 @@ const handleDelete = (id) => {
                         <h2 className="text-center">{product?.quantity}</h2>
                       </td>
                       <td className="border-r border-gray-400">
-                        <h2 className="text-center">$ {(product?.price * (product?.quantity || 1)).toFixed(2)}</h2>
+                        <h2 className="text-center">
+                          ${" "}
+                          {(product?.price * (product?.quantity || 1)).toFixed(
+                            2
+                          )}
+                        </h2>
                       </td>
                       <td>
-                        <button onClick={() => handleDelete(product._id)} className=" rounded-full border-2 w-12 h-12 text-gray-400 hover:border-0 hover:text-white hover:bg-red-600 duration-300">X</button>
+                        <button
+                          onClick={() => handleDelete(product._id)}
+                          className=" rounded-full border-2 w-12 h-12 text-gray-400 hover:border-0 hover:text-white hover:bg-red-600 duration-300"
+                        >
+                          X
+                        </button>
                       </td>
                     </tr>
                   ))}

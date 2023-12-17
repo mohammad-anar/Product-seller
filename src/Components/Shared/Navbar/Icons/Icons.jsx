@@ -12,6 +12,8 @@ const Icons = () => {
       const res = await axiosSecure.get("/carts");
       return res;
     },
+    refetchInterval: 1000,
+    enabled: true
   });
   const quantity = products?.data?.data?.reduce((total, current) => {
       return total = total + current?.quantity
