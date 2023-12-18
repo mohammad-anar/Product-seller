@@ -61,81 +61,120 @@ const Carts = () => {
       ) : (
         <div>
           {
-            <div className="overflow-x-auto hidden md:block">
-              <table className="table border bg-transparent border-gray-400 text-center">
-                {/* head */}
-                <thead>
-                  <tr className="text-lg text-black border-gray-400 h-20">
-                    <th
-                      colSpan={2}
-                      className="border-r border-gray-400 text-center"
-                    >
-                      Product
-                    </th>
-                    <th className="border-r border-gray-400">Price</th>
-                    <th className="border-r border-gray-400">Quantity</th>
-                    <th className="border-r border-gray-400">Total</th>
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  {/* row 1 */}
-                  {products?.data?.data?.map((product) => (
-                    <tr key={product._id} className="border border-gray-400">
-                      <td className="border-r border-gray-400 w-48 p-6">
-                        <div className=" w-full">
-                          <img
-                            className=" w-32 mx-auto"
-                            src={product?.image}
-                            alt="product image"
-                          />
-                        </div>
-                      </td>
-                      <td className="border-r border-gray-400 ">
-                        <div>
-                          <div className="font-bold">
-                            <h2 className="text-center text-base">
-                              {product?.product_name}
-                            </h2>
+            <div>
+              <div className="overflow-x-auto hidden md:block">
+                <table className="table border bg-transparent border-gray-400 text-center">
+                  {/* head */}
+                  <thead>
+                    <tr className="text-lg text-black border-gray-400 h-20">
+                      <th
+                        colSpan={2}
+                        className="border-r border-gray-400 text-center"
+                      >
+                        Product
+                      </th>
+                      <th className="border-r border-gray-400">Price</th>
+                      <th className="border-r border-gray-400">Quantity</th>
+                      <th className="border-r border-gray-400">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-sm">
+                    {/* row 1 */}
+                    {products?.data?.data?.map((product) => (
+                      <tr key={product._id} className="border border-gray-400">
+                        <td className="border-r border-gray-400 w-48 p-6">
+                          <div className=" w-full">
+                            <img
+                              className=" w-32 mx-auto"
+                              src={product?.image}
+                              alt="product image"
+                            />
                           </div>
-                        </div>
-                      </td>
+                        </td>
+                        <td className="border-r border-gray-400 ">
+                          <div>
+                            <div className="font-bold">
+                              <h2 className="text-center text-base">
+                                {product?.product_name}
+                              </h2>
+                            </div>
+                          </div>
+                        </td>
 
-                      <td className="border-r border-gray-400">
-                        <h1>$ {product?.price}</h1>
-                      </td>
-                      <td className="border-r border-gray-400">
-                        <h2 className="text-center">{product?.quantity}</h2>
-                      </td>
-                      <td className="border-r border-gray-400">
-                        <h2 className="text-center">
-                          ${" "}
+                        <td className="border-r border-gray-400">
+                          <h1>$ {product?.price}</h1>
+                        </td>
+                        <td className="border-r border-gray-400">
+                          <h2 className="text-center">{product?.quantity}</h2>
+                        </td>
+                        <td className="border-r border-gray-400">
+                          <h2 className="text-center">
+                            ${" "}
+                            {(
+                              product?.price * (product?.quantity || 1)
+                            ).toFixed(2)}
+                          </h2>
+                        </td>
+                        <td>
+                          <button
+                            onClick={() => handleDelete(product._id)}
+                            className=" rounded-full border-2 w-12 h-12 text-gray-400 hover:border-0 hover:text-white hover:bg-red-600 duration-300"
+                          >
+                            X
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="my-12 grid gird-cols-1  ">
+                {/* card 1  */}
+                {products?.data?.data?.map((product) => (
+                  <div
+                    key={product._id}
+                    className="card md:hidden border max-w-xl  py-12 rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
+                  >
+                    <figure className="px-14 pt-5">
+                      <img
+                        src={product.image}
+                        alt="image"
+                        className="rounded-xl max-w-[150px]"
+                      />
+                    </figure>
+                    <div className="card-body items-center text-center mt-4 text-base">
+                      <div className="space-y-1">
+                        <p className="text-xl mb-4 text-black font-medium">
+                          {product.product_name} {"(Model)"}
+                        </p>
+                        <h2 className="text-red-600 -mt-6 font-bold">
+                          <span className="ml-2"><span className="text-black text-base">Price: </span>$ {product.price}</span>
+                        </h2>
+                        <h2 className=" -mt-6  mb-4">
+                          <span className="ml-2 ">Quantity: {product.quantity}</span>
+                        </h2>
+                        <h2 className="text-center"> Total: 
+                          $
                           {(product?.price * (product?.quantity || 1)).toFixed(
                             2
                           )}
                         </h2>
-                      </td>
-                      <td>
-                        <button
-                          onClick={() => handleDelete(product._id)}
-                          className=" rounded-full border-2 w-12 h-12 text-gray-400 hover:border-0 hover:text-white hover:bg-red-600 duration-300"
-                        >
-                          X
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <div className="flex items-center justify-end gap-5 my-6 mb-0">
                 <button
-                  onClick={() =>navigate("/products")}
-                  className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 "
+                  onClick={() => navigate("/products")}
+                  className={`btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 `}
                 >
                   Continue shopping
                 </button>
                 <button
                   onClick={handleClearCart}
-                  className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 "
+                  className={`${products?.data?.data?.length > 0 || "hidden"} btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500`}
                 >
                   Clear cart
                 </button>
