@@ -9,22 +9,16 @@ import useAxiosSecure from "../hooks/useAxiosSecure/axiosSecure";
 import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic/AxiosPublic";
-
-
+import Loader from "./Shared/Loader/Loader";
 
 const ProductsMain = () => {
-
   const [sortCard, setSortCard] = useState(true);
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
 
-  // load data 
-  const {
-    data:products,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["products","carts"],
+  // load data
+  const { data: products, isLoading } = useQuery({
+    queryKey: ["products", "carts"],
     queryFn: async () => {
       const res = await axiosPublic.get("/products");
       return res;
@@ -53,7 +47,11 @@ const ProductsMain = () => {
       <ContentTop setSortCart={setSortCard} />
       {/* cards  */}
       <div className="flex flex-col ">
-        {sortCard ? (
+        {isLoading ? (
+          <div className="felx items-center justify-center h-[80vh]">
+            <Loader />
+          </div>
+        ) : sortCard ? (
           <div className="my-12 grid gird-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 ">
             {/* card 1  */}
             {products?.data.map((product) => (
@@ -94,54 +92,62 @@ const ProductsMain = () => {
             ))}
           </div>
         ) : (
-          <div className="my-12 grid gird-cols-1 gap-5">
-            {products?.data.map((product) => (
-              <div
-                key={product._id}
-                className="w-full shadow-md hover:shadow-sm duration-300"
-              >
-                <div className="flex items-center w-full gap-10">
-                  <img
-                    src={product.image}
-                    className="max-w-sm w-72 h-60 p-2 rounded-lg bg-white"
-                  />
-                  <div className=" space-y-2 ml-4 w-full">
-                    <h1 className="text-xl font-medium">
-                      {product.product_name}
-                    </h1>
-                    <div>
-                      <Rating
-                        style={{ maxWidth: 100 }}
-                        value={product.rating}
+          <>
+            {isLoading ? (
+              <div className="felx items-center justify-center h-[80vh]">
+                <Loader />
+              </div>
+            ) : (
+              <div className="my-12 grid gird-cols-1 gap-5">
+                {products?.data.map((product) => (
+                  <div
+                    key={product._id}
+                    className="w-full shadow-md hover:shadow-sm duration-300"
+                  >
+                    <div className="flex items-center w-full gap-10">
+                      <img
+                        src={product.image}
+                        className="max-w-sm w-72 h-60 p-2 rounded-lg bg-white"
                       />
-                    </div>
-                    <div className="text-base">
-                      <del className="text-gray-400">
-                        $ {product.price + (product.price * 20) / 100}
-                      </del>{" "}
-                      <span className="ml-2">$ {product.price}</span>
-                    </div>
-                    <hr />
-                    <div className="space-y-3">
-                      <p className="text-base text-gray-700">
-                        {product.description}
-                      </p>
-                      <div className="flex items-start gap-2">
-                        <GrFavorite
-                          size={40}
-                          className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
-                        />
-                        <FaOpencart
-                          size={40}
-                          className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
-                        />
+                      <div className=" space-y-2 ml-4 w-full">
+                        <h1 className="text-xl font-medium">
+                          {product.product_name}
+                        </h1>
+                        <div>
+                          <Rating
+                            style={{ maxWidth: 100 }}
+                            value={product.rating}
+                          />
+                        </div>
+                        <div className="text-base">
+                          <del className="text-gray-400">
+                            $ {product.price + (product.price * 20) / 100}
+                          </del>{" "}
+                          <span className="ml-2">$ {product.price}</span>
+                        </div>
+                        <hr />
+                        <div className="space-y-3">
+                          <p className="text-base text-gray-700">
+                            {product.description}
+                          </p>
+                          <div className="flex items-start gap-2">
+                            <GrFavorite
+                              size={40}
+                              className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
+                            />
+                            <FaOpencart
+                              size={40}
+                              className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
         {/* card 1  long card*/}
 

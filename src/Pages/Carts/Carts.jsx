@@ -3,9 +3,11 @@ import useAxiosSecure from "../../hooks/useAxiosSecure/axiosSecure";
 import Loader from "../../Components/Shared/Loader/Loader";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Carts = () => {
-    const [agree, setAgree] = useState(false);
+  const navigate = useNavigate();
+  const [agree, setAgree] = useState(false);
   const axiosSecure = useAxiosSecure();
   const {
     data: products,
@@ -20,7 +22,7 @@ const Carts = () => {
   });
   const handleDelete = (id) => {
     axiosSecure
-      .delete(`/carts/${id}`)
+      .delete(`/carts?id=${id}`)
       .then((res) => {
         if (res.data?.deletedCount === 1) {
           refetch();
@@ -30,10 +32,23 @@ const Carts = () => {
       .catch((err) => console.log(err));
   };
   const cartTotal = products?.data?.data.reduce((total, current) => {
-        total = total + (current?.price * current?.quantity);
-        return total
-        
-  }, 0)
+    total = total + current?.price * current?.quantity;
+    return total;
+  }, 0);
+
+  //   clear all cart items
+  const handleClearCart = () => {
+    axiosSecure
+      .delete(`/carts`)
+      .then((res) => {
+        console.log(res);
+        if (res.data?.deletedCount > 0) {
+          refetch();
+          toast.success(`deleted all carts items 🔥`);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="p-4">
       <h2 className="text-xl font-semibold md:text-2xl text-red-600 text-center my-12 mt-6">
@@ -112,10 +127,16 @@ const Carts = () => {
                 </tbody>
               </table>
               <div className="flex items-center justify-end gap-5 my-6 mb-0">
-                <button className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 ">
+                <button
+                  onClick={() =>navigate("/products")}
+                  className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 "
+                >
                   Continue shopping
                 </button>
-                <button className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 ">
+                <button
+                  onClick={handleClearCart}
+                  className="btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500 "
+                >
                   Clear cart
                 </button>
               </div>
@@ -133,16 +154,22 @@ const Carts = () => {
               <td className="border border-gray-400 text-lg font-bold">
                 SubTotal
               </td>
-              <td className="border border-gray-400 text-base">$ {cartTotal.toFixed(2)}</td>
+              <td className="border border-gray-400 text-base">
+                $ {cartTotal?.toFixed(2)}
+              </td>
             </tr>
             <tr className="border border-gray-400 h-12 w-1/2">
-              <td className="border border-gray-400 text-lg font-bold">Total</td>
-              <td className="border border-gray-400 text-base">$ {cartTotal.toFixed(2)}</td>
+              <td className="border border-gray-400 text-lg font-bold">
+                Total
+              </td>
+              <td className="border border-gray-400 text-base">
+                $ {cartTotal?.toFixed(2)}
+              </td>
             </tr>
           </table>
           <div className="flex items-center gap-4 my-5">
             <input
-            onClick={() => setAgree(!agree)}
+              onClick={() => setAgree(!agree)}
               type="checkbox"
               className="checkbox chckbox-xs border-gray-400"
             />
@@ -151,7 +178,11 @@ const Carts = () => {
             </p>
           </div>
           <div className="text-left">
-            <button className={`${agree || "btn-disabled"}  btn btn-wide bg-red-600 text-white border-0 rounded-full hover:bg-red-500`}>
+            <button
+              className={`${
+                agree || "btn-disabled"
+              }  btn btn-wide bg-red-600 text-white border-0 rounded-full hover:bg-red-500`}
+            >
               Proceed to checkout
             </button>
           </div>
