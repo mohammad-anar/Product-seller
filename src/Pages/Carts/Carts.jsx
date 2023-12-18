@@ -134,7 +134,7 @@ const Carts = () => {
                 {products?.data?.data?.map((product) => (
                   <div
                     key={product._id}
-                    className="card md:hidden border max-w-xl  py-12 rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
+                    className="card md:hidden border max-w-xl py-12 rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
                   >
                     <figure className="px-14 pt-5">
                       <img
@@ -144,22 +144,36 @@ const Carts = () => {
                       />
                     </figure>
                     <div className="card-body items-center text-center mt-4 text-base">
-                      <div className="space-y-1">
+                      <div className="">
                         <p className="text-xl mb-4 text-black font-medium">
                           {product.product_name} {"(Model)"}
                         </p>
-                        <h2 className="text-red-600 -mt-6 font-bold">
-                          <span className="ml-2"><span className="text-black text-base">Price: </span>$ {product.price}</span>
+                        <h2 className="text-red-600 mt-2 font-bold">
+                          <span className="ml-2">
+                            <span className="text-black text-base">
+                              Price:{" "}
+                            </span>
+                            $ {product.price}
+                          </span>
                         </h2>
-                        <h2 className=" -mt-6  mb-4">
-                          <span className="ml-2 ">Quantity: {product.quantity}</span>
+                        <h2 className=" my-1">
+                          <span className="ml-2 ">
+                            Quantity: {product.quantity}
+                          </span>
                         </h2>
-                        <h2 className="text-center"> Total: 
-                          $
+                        <h2 className="text-center">
+                          {" "}
+                          Total: $
                           {(product?.price * (product?.quantity || 1)).toFixed(
                             2
                           )}
                         </h2>
+                        <button
+                          onClick={() => handleDelete(product._id)}
+                          className="btn btn-sm bg-red-600 border-0 mt-2 text-white hover:bg-red-500 block mx-auto"
+                        >
+                          Remove
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -174,7 +188,9 @@ const Carts = () => {
                 </button>
                 <button
                   onClick={handleClearCart}
-                  className={`${products?.data?.data?.length > 0 || "hidden"} btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500`}
+                  className={`${
+                    products?.data?.data?.length > 0 || "hidden"
+                  } btn px-8 bg-red-600 text-white border-0 rounded-full hover:bg-red-500`}
                 >
                   Clear cart
                 </button>
@@ -185,7 +201,7 @@ const Carts = () => {
       )}
       {/* cart total  */}
       <hr className="border-1 my-12 border-gray-300" />
-      <div className="max-w-xl text-center my-12 bg-gray-100 p-12 px-20 rounded-xl ml-auto">
+      <div className="max-w-xl text-center my-12 bg-gray-100 p-12 px-20 rounded-xl mx-auto md:ml-auto">
         <h2 className="text-4xl font-medium mb-8">Cart total</h2>
         <div className="w-full bg-transparent">
           <table className="border border-gray-400 w-full">
