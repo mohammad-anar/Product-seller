@@ -40,6 +40,17 @@ const ProductsMain = () => {
       })
       .catch((err) => console.log(err));
   };
+  const handleFavourite = (id) => {
+    axiosSecure
+      .post("/favourites", { id })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data?.insertedId) {
+          toast.success("item added to favourite 👌");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="bg-white md:col-span-7 order-first lg:order-last mb-20 lg:mb-0">
@@ -78,6 +89,7 @@ const ProductsMain = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <GrFavorite
+                    onClick={() => handleFavourite(product._id)}
                       size={40}
                       className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
                     />
@@ -136,6 +148,7 @@ const ProductsMain = () => {
                               className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
                             />
                             <FaOpencart
+                            onClick={() => handleCard(product._id)}
                               size={40}
                               className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
                             />

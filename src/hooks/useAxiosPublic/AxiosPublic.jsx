@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL: "http://localhost:5001",
 });
 const useAxiosPublic = () => {
-    return instance
+    return instance;
 };
 
 export default useAxiosPublic;

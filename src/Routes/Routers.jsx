@@ -11,6 +11,8 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Contact from "../Pages/Contact/Contact";
 import Blog from "../Pages/Blog/Blog";
 import Carts from "../Pages/Carts/Carts";
+import Payment from "../Pages/Payment/Payment";
+import Favourites from "../Pages/Favourites/Favourites";
 
 const Routers = createBrowserRouter([
     {
@@ -31,8 +33,16 @@ const Routers = createBrowserRouter([
                 element: <Carts/>,
             },
             {
+                path: "favourite",
+                element: <Favourites/>,
+            },
+            {
                 path: "blog",
                 element: <Blog/>
+            },
+            {
+                path: "payment",
+                element: <Payment/>
             },
             {
                 path: "about",
