@@ -10,7 +10,6 @@ import Faq from "../Pages/FAQ/FAQ";
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Contact from "../Pages/Contact/Contact";
 import Blog from "../Pages/Blog/Blog";
-import { allPorducts } from "../utils";
 import Carts from "../Pages/Carts/Carts";
 
 const Routers = createBrowserRouter([
@@ -26,7 +25,6 @@ const Routers = createBrowserRouter([
             {
                 path: "products",
                 element: <Products/>,
-                loader: async () => await allPorducts()
             },
             {
                 path: "cart",

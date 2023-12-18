@@ -7,7 +7,7 @@ import useAxiosSecure from "../../../../hooks/useAxiosSecure/axiosSecure";
 const Icons = () => {
   const axiosSecure = useAxiosSecure();
   const { data: products, isLoading} = useQuery({
-    queryKey: ["carts"],
+    queryKey: ["cartsquantity"],
     queryFn: async () => {
       const res = await axiosSecure.get("/carts");
       return res;

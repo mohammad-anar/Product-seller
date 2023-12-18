@@ -7,10 +7,29 @@ import { GrFavorite } from "react-icons/gr";
 import { FaOpencart } from "react-icons/fa";
 import useAxiosSecure from "../hooks/useAxiosSecure/axiosSecure";
 import toast from "react-hot-toast";
-const ProductsMain = ({ products }) => {
-  console.log(products);
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic/AxiosPublic";
+
+
+
+const ProductsMain = () => {
+
   const [sortCard, setSortCard] = useState(true);
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+
+  // load data 
+  const {
+    data:products,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["products","carts"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/products");
+      return res;
+    },
+  });
 
   // cart handler
   const handleCard = (id) => {
@@ -37,7 +56,7 @@ const ProductsMain = ({ products }) => {
         {sortCard ? (
           <div className="my-12 grid gird-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 ">
             {/* card 1  */}
-            {products.map((product) => (
+            {products?.data.map((product) => (
               <div
                 key={product._id}
                 className="card  h-[350px] rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
@@ -76,7 +95,7 @@ const ProductsMain = ({ products }) => {
           </div>
         ) : (
           <div className="my-12 grid gird-cols-1 gap-5">
-            {products.map((product) => (
+            {products?.data.map((product) => (
               <div
                 key={product._id}
                 className="w-full shadow-md hover:shadow-sm duration-300"
