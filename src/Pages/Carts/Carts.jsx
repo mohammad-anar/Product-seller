@@ -93,7 +93,7 @@ const Carts = () => {
     <>
       {products?.data?.data?.length > 0 ? (
         <div className="p-4">
-          <h2 className="text-xl font-semibold md:text-2xl text-red-600 text-center my-12 mt-6">
+          <h2 className="text-xl font-semibold md:text-2xl text-gray-800  text-center my-12 mt-6">
             Your Shopping Cart
           </h2>
           {isLoading ? (
@@ -156,7 +156,7 @@ const Carts = () => {
                             </td>
                             <td className="border-r border-gray-400">
                               <h2 className="text-center">
-                                ${" "}
+                                $
                                 {(
                                   product?.price * (product?.quantity || 1)
                                 ).toFixed(2)}
@@ -198,7 +198,7 @@ const Carts = () => {
                             <h2 className="text-red-600 mt-2 font-bold">
                               <span className="ml-2">
                                 <span className="text-black text-base">
-                                  Price:{" "}
+                                  Price:
                                 </span>
                                 $ {product.price}
                               </span>
@@ -209,7 +209,6 @@ const Carts = () => {
                               </span>
                             </h2>
                             <h2 className="text-center">
-                              {" "}
                               Total: $
                               {(
                                 product?.price * (product?.quantity || 1)
@@ -332,18 +331,17 @@ const Carts = () => {
                   placeholder="Zip/Postal Code"
                 />
                 <button
-                   
-                    className={` block btn btn-wide bg-red-600 text-base text-white border-0 rounded-full hover:bg-red-500`}
-                  >
-                    Calcualte Shipping
-                  </button>
+                  className={` block btn btn-wide bg-red-600 text-base text-white border-0 rounded-full hover:bg-red-500`}
+                >
+                  Calcualte Shipping
+                </button>
               </div>
             </div>
           </div>
         </div>
       ) : (
         // is empty return this
-        <div className="flex flex-col gap-5 items-center justify-center h-[60vh] space-y-5">
+        <div className="flex flex-col gap-5 items-center justify-center h-[80vh] space-y-5">
           <h2 className="text-4xl font-medium ">Shopping Cart is empty</h2>
           <TbShoppingCartX size={120} className="text-red-600" />
           <p className="text-lg text-gray-700">
@@ -353,8 +351,7 @@ const Carts = () => {
             onClick={() => navigate("/products")}
             className="flex items-center gap-2 text-base cursor-pointer"
           >
-            {" "}
-            <FaAnglesLeft /> Continue shopping
+            <FaAnglesLeft className="text-red-600" /> Continue shopping
           </h4>
         </div>
       )}

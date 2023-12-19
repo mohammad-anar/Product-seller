@@ -10,8 +10,10 @@ import toast from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic/AxiosPublic";
 import Loader from "./Shared/Loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 const ProductsMain = () => {
+  const navigate = useNavigate();
   const [sortCard, setSortCard] = useState(true);
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
@@ -99,6 +101,9 @@ const ProductsMain = () => {
                       className="hover:text-red duration-300 hover:bg-gray-200 rounded-full p-2 hover:text-red-600"
                     />
                   </div>
+                  <div>
+                <button onClick={() => navigate(`/products/${product._id}`)} className="text-gray-700 border-b hover:text-red-600 duration-300 ">Details</button>
+              </div>
                 </div>
               </div>
             ))}

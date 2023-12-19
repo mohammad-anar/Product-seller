@@ -13,6 +13,7 @@ import Blog from "../Pages/Blog/Blog";
 import Carts from "../Pages/Carts/Carts";
 import Payment from "../Pages/Payment/Payment";
 import Favourites from "../Pages/Favourites/Favourites";
+import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 
 const Routers = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const Routers = createBrowserRouter([
             {
                 path: "products",
                 element: <Products/>,
+            },
+            {
+                path: "products/:id",
+                element: <ProductsDetails/>,
             },
             {
                 path: "cart",
