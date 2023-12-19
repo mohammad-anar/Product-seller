@@ -1,5 +1,6 @@
 import { Rating } from "@smastrom/react-rating";
 import { useState } from "react";
+import { CiEdit } from "react-icons/ci";
 
 const ProductsREview = () => {
     const [rating, setRating] = useState(0)
@@ -15,13 +16,13 @@ const ProductsREview = () => {
                       <p>No reviews yet</p>
                     </div>
                     <div>
-                      <button onClick={(() => setWriteReview(!writeRevidw))} className="hover:border-b">Write a review</button>
+                      <button onClick={(() => setWriteReview(!writeRevidw))} className="hover:border-b flex items-center gap-2"> <CiEdit size={18}/> Write a review</button>
                     </div>
                   </div>
                   <div className="border-t p-4">
                   {writeRevidw &&  <div>
-                      <h2 className="text-base font-bold text-gray-400">
-                        Write a review
+                      <h2 className="text-base font-bold text-gray-400 flex items-center gap-2">
+                      <CiEdit size={18}/> Write a review
                       </h2>
                      <form >
                       {/* name  */}

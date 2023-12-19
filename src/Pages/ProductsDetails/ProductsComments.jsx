@@ -2,6 +2,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { MdGifBox } from "react-icons/md";
 import { IoSendSharp } from "react-icons/io5";
 import { useState } from "react";
+import { CiEdit } from "react-icons/ci";
 const ProductsComments = () => {
     const [writeComment, setWriteComment] = useState(false);
     return (
@@ -18,9 +19,9 @@ const ProductsComments = () => {
                     <div>
                       <button
                         onClick={() => setWriteComment(!writeComment)}
-                        className="hover:border-b"
+                        className="hover:border-b flex items-center gap-2"
                       >
-                        Write a Comment
+                       <CiEdit size={18}/> Write a Comment
                       </button>
                     </div>
                   </div>
@@ -28,7 +29,7 @@ const ProductsComments = () => {
                     <div className="border-t p-4">
                       <div>
                         <h2 className="text-base font-bold text-gray-400">
-                          Write a Cimment
+                          Write a Comment
                         </h2>
                         <div>
                           <textarea

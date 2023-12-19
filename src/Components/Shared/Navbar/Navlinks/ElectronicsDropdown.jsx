@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const ElectronicsDropdown = () => {
   return (
-    <div className="flex items-start gap-12">
+    <div className="grid grid-cols-2 lg:flex flex-row items-start gap-12 ">
       <div className="pl-4 space-y-1">
         <h2 className="text-lg font-medium mb-3 text-red-500">Smart Phones</h2>
         {/* products 1  */}

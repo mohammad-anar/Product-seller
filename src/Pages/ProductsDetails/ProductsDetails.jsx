@@ -7,7 +7,6 @@ import { FaShippingFast } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { FaFacebookF } from "react-icons/fa";
 
-
 import { MdOutlineFavorite } from "react-icons/md";
 import { FaMinus, FaPinterest, FaPlus, FaTwitter } from "react-icons/fa6";
 import toast from "react-hot-toast";
@@ -21,9 +20,6 @@ import ProductsComments from "./ProductsComments";
 const ProductsDetails = () => {
   const { id } = useParams();
   const [tabIndex, setTabIntex] = useState(0);
-
-  const [tabShow, setTabshow] = useState(0);
-
   const axiosSecure = useAxiosSecure();
   const { data: products, isLoading } = useQuery({
     queryKey: ["favourites"],
@@ -67,7 +63,7 @@ const ProductsDetails = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-12 min-h-screen max-w-screen">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-12 min-h-screen max-w-screen px-2 lg:px-0">
             <div className="border flex flex-col justify-between max-h-screen mt-14">
               <div className="p-10">
                 <img
@@ -94,7 +90,7 @@ const ProductsDetails = () => {
                 />
               </div>
             </div>
-            <div className="h-screen overflow-y-scroll">
+            <div className="h-screen overflow-y-scroll mt-5 lg:mt-0">
               <h2 className="text-4xl font-bolmedium">
                 {products?.data?.product_name}
               </h2>
@@ -298,7 +294,6 @@ const ProductsDetails = () => {
                 role="tab"
                 onClick={() => {
                   setTabIntex(2);
-                  setTabshow(2);
                 }}
                 className={`tab text-gray-700 text-base font-semibold ${
                   tabIndex === 2 && "border-b text-red-600"
@@ -308,16 +303,18 @@ const ProductsDetails = () => {
               </a>
             </div>
             <div className="mt-5 text-gray-500 px-6">
-            {/* description  */}
-              {tabIndex === 0 && <p className="px-5">
-                {products?.data?.description}
-              </p>}
+              {/* description  */}
+              {tabIndex === 0 && (
+                <p className="px-5">{products?.data?.description}</p>
+              )}
               {/* review  */}
-              {tabIndex === 1 &&<div>
-                <ProductsREview />
-              </div>}
+              {tabIndex === 1 && (
+                <div>
+                  <ProductsREview />
+                </div>
+              )}
               {/* comment  */}
-              {tabIndex === 2 && <ProductsComments/>}
+              {tabIndex === 2 && <ProductsComments />}
             </div>
           </div>
         </>

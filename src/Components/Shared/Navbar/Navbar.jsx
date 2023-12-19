@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className="w-full  p-4 bg-white border-b hidden lg:block ">
         <div className="flex items-center justify-between">
           <div className="dropdown dropdown-hover w-[300px]">
-            <button className=" bg-red-600 w-[230px] p-4 px-6 rounded-md text-white font-bold text-lg flex items-center gap-2">
+            <button className=" bg-red-800 lg:bg-red-600 w-[230px] p-4 px-6 rounded-md text-white font-bold text-lg flex items-center gap-2">
               <FaBars /> All Categories
               <FaChevronDown />
             </button>
