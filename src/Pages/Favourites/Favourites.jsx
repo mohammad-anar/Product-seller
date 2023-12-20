@@ -6,8 +6,10 @@ import { MdFavorite } from "react-icons/md";
 import Loader from "../../Components/Shared/Loader/Loader";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Favourites = () => {
+  const {user} = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const {
@@ -17,7 +19,7 @@ const Favourites = () => {
   } = useQuery({
     queryKey: ["favourites"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/favourites");
+      const res = await axiosSecure.get(`/favourites?email=${user?.email}`);
       return res;
     },
   });
