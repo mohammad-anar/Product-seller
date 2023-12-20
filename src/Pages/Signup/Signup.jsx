@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { imageUpload } from "../../utils";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const { createUser, updatUser, googleSignIn } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,8 +18,28 @@ const SignUp = () => {
     const password = data.password;
     const name = data.name;
     const photo = data.photo["0"];
-   const imageData = await imageUpload(photo)
-    console.log(email, password, name, photo, imageData);
+    const { data: imageData } = await imageUpload(photo);
+    //  create user
+    createUser(email, password)
+      .then((res) => {
+        if (res.user) {
+          toast.success("User Created 🔥");
+        }
+        // updatUser
+        updatUser(name, imageData?.display_url)
+          .then(() => console.log("profileUpdated"))
+          .catch((err) => console.log(err));
+        navigate("/")
+      })
+      .catch((err) => {console.log(err);toast.error(err.message)});
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(() => {
+        toast.success("google signin successful");
+        navigate("/")
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="px-12 flex flex-col items-center justify-center my-12">
@@ -111,7 +135,7 @@ const SignUp = () => {
           </div>
           <div className="w-full flex items-center justify-center mt-4">
             <div className="border-2 p-2 rounded-full border-blue-300 hover:bg-gray-200">
-              <FcGoogle size={25} />
+              <FcGoogle onClick={handleGoogleSignIn} size={25} />
             </div>
           </div>
           <h2 className="mt-4">

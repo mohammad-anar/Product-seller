@@ -1,10 +1,14 @@
 import { GrFavorite } from "react-icons/gr";
 import { FaOpencart } from "react-icons/fa";
 import { LuUser2 } from "react-icons/lu";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure/axiosSecure";
+import useAuth from "../../../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Icons = () => {
+  const navigate = useNavigate();
+  const {logOut, user} = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: products, isLoading} = useQuery({
     queryKey: ["cartsquantity"],
@@ -77,6 +81,9 @@ const Icons = () => {
                 Login/Sign Up
               </h2>
             </Link>
+              {user && <h2 onClick={() => logOut().then(() =>{ toast.success("logout successfull"); navigate("/login")})} className="mt-3 hover:bg-red-400  p-2 text-center font-bold duration-300 rounded-full bg-red-600 text-white ">
+                Logout
+              </h2>}
           </div>
         </div>
       </div>
