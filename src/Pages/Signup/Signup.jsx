@@ -4,8 +4,10 @@ import { FcGoogle } from "react-icons/fc";
 import { imageUpload } from "../../utils";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure/axiosSecure";
 
 const SignUp = () => {
+  const axiosSecure = useAxiosSecure();
   const { createUser, updatUser, googleSignIn } = useAuth();
   const navigate = useNavigate();
   const {
@@ -22,22 +24,42 @@ const SignUp = () => {
     //  create user
     createUser(email, password)
       .then((res) => {
+        const user = res.user;
         if (res.user) {
           toast.success("User Created 🔥");
         }
         // updatUser
         updatUser(name, imageData?.display_url)
-          .then(() => console.log("profileUpdated"))
+          .then(() => {
+            console.log("profileUpdated");
+            axiosSecure
+              .post("/users", {
+                name: user.displayName,
+                email: user.email,
+                image: user.photoURL,
+              })
+              .then((res) => {
+                if (res.data?.insertedId) {
+                  toast.success("user saved to db");
+                }
+              })
+              .catch((err) => console.log(err));
+          })
           .catch((err) => console.log(err));
-        navigate("/")
+        //  save user to db
+
+        navigate("/");
       })
-      .catch((err) => {console.log(err);toast.error(err.message)});
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(() => {
         toast.success("google signin successful");
-        navigate("/")
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
