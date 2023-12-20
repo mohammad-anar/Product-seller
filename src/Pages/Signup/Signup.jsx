@@ -2,6 +2,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { imageUpload } from "../../utils";
 
 const SignUp = () => {
   const {
@@ -12,7 +13,10 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     const email = data.email;
     const password = data.password;
-    console.log(email, password);
+    const name = data.name;
+    const photo = data.photo['0'];
+    imageUpload(photo)
+    console.log(email, password, name, photo);
   };
     return (
         <div className="px-12 flex flex-col items-center justify-center my-12">
