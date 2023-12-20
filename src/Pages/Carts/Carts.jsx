@@ -10,8 +10,10 @@ import DatePicker from "react-datepicker";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
 import "react-datepicker/dist/react-datepicker.css";
+import useAuth from "../../hooks/useAuth";
 
 const Carts = () => {
+  const {user} = useAuth();
   const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
   const [agree, setAgree] = useState(false);
@@ -56,7 +58,7 @@ const Carts = () => {
   } = useQuery({
     queryKey: ["carts"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/carts");
+      const res = await axiosSecure.get(`/carts?email=${user?.email}`);
       return res;
     },
   });

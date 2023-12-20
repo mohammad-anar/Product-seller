@@ -11,8 +11,10 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../hooks/useAxiosPublic/AxiosPublic";
 import Loader from "./Shared/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const ProductsMain = () => {
+  const {user} = useAuth();
   const navigate = useNavigate();
   const [sortCard, setSortCard] = useState(true);
   const axiosSecure = useAxiosSecure();
@@ -30,7 +32,7 @@ const ProductsMain = () => {
   // cart handler
   const handleCard = (id) => {
     axiosSecure
-      .post("/carts", { id })
+      .post(`/carts?email=${user.email}`, { id })
       .then((res) => {
         console.log(res.data);
         if (res.data?.insertedId) {

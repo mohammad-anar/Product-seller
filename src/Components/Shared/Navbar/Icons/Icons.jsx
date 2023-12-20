@@ -13,7 +13,7 @@ const Icons = () => {
   const { data: products, isLoading} = useQuery({
     queryKey: ["cartsquantity"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/carts");
+      const res = await axiosSecure.get(`/carts?email=${user?.email}`);
       return res;
     },
     refetchInterval: 1000,
