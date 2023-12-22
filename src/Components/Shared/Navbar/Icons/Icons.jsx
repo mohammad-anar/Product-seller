@@ -22,6 +22,7 @@ const Icons = () => {
   const quantity = products?.data?.data?.reduce((total, current) => {
       return total = total + current?.quantity
   }, 0 )
+  console.log(user);
   return (
     <div className="flex items-center gap-8 text-2xl">
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
@@ -67,14 +68,16 @@ const Icons = () => {
           }
         >
           <p className="cursor-pointer">
-            <LuUser2 size={25} className="hover:text-red-600" />
+            {!user ? <LuUser2 size={25} className="hover:text-red-600" />: 
+            <img className="w-10 rounded-full" src={user?.photoURL} alt="user image" />}
           </p>
           <div
             tabIndex={0}
             className="dropdown-content absolute z-[1] bg-white menu mt-4 right-0 shadow rounded-0 p-4 w-40"
           >
             <div className="flex items-center justify-center mb-6">
-              <LuUser2 size={40} className="rounded-full border p-2" />
+            {!user ? <LuUser2 size={25} className="hover:text-red-600" />: 
+            <img className="w-16 rounded-full" src={user?.photoURL} alt="user image" />}
             </div>
             <Link to="/login">
               <h2 className="text-red-600 border-y  p-2 text-center font-bold duration-300 hover:rounded-full hover:bg-red-600 hover:text-white ">
@@ -93,19 +96,3 @@ const Icons = () => {
 
 export default Icons;
 
-<div className="dropdown dropdown-end">
-  <div tabIndex={0} role="button" className="btn m-1">
-    Click
-  </div>
-  <ul
-    tabIndex={0}
-    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-  >
-    <li>
-      <a>Item 1</a>
-    </li>
-    <li>
-      <a>Item 2</a>
-    </li>
-  </ul>
-</div>;

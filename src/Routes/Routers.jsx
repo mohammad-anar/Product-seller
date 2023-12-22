@@ -14,6 +14,7 @@ import Carts from "../Pages/Carts/Carts";
 import Payment from "../Pages/Payment/Payment";
 import Favourites from "../Pages/Favourites/Favourites";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 const Routers = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ const Routers = createBrowserRouter([
             },
         ]
 
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardLayout/>
     }
 ])
 export default Routers;
