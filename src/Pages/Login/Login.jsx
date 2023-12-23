@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure/axiosSecure";
 
 const Login = () => {
+  const axiosSecure = useAxiosSecure();
   const {signInUser, googleSignIn} = useAuth();
   const navigate = useNavigate();
   const {
@@ -26,8 +28,21 @@ const Login = () => {
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
+      .then((res) => {
+        const user = res?.user;
         toast.success("google signin successful");
+        axiosSecure
+          .post("/users", {
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+          .then((res) => {
+            if (res.data?.insertedId) {
+              toast.success("user saved to db");
+            }
+          })
+          .catch((err) => console.log(err));
         navigate("/")
       })
       .catch((err) => console.log(err));

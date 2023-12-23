@@ -23,7 +23,6 @@ const ProductsMain = () => {
   const [sortCard, setSortCard] = useState(true);
   const [itemsPerPage, setItemPerPage] = useState(6);
   const [pageNumber, setPageNumber] = useState(0);
-console.log(pageNumber);
   const { data, isLoading } = useQuery({
     queryKey: ["products", "carts", itemsPerPage, pageNumber],
     queryFn: async () => {

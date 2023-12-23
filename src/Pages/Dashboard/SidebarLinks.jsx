@@ -11,7 +11,7 @@ const SidebarLinks = () => {
           {/* links 1  */}
           <div className="bg-gray-400 hover:bg-gray-500 duration-300 p-3 text-white rounded-lg">
             <NavLink
-              to="dashboard-home"
+              to="/dashboard"
               tabIndex={0}
               role="button"
               className={({ isActive, isPending }) =>

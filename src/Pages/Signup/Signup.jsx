@@ -57,8 +57,21 @@ const SignUp = () => {
   };
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
+      .then((res) => {
+        const user = res.user;
         toast.success("google signin successful");
+        axiosSecure
+          .post("/users", {
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+          .then((res) => {
+            if (res.data?.insertedId) {
+              toast.success("user saved to db");
+            }
+          })
+          .catch((err) => console.log(err));
         navigate("/");
       })
       .catch((err) => console.log(err));
