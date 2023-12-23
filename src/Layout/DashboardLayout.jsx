@@ -1,6 +1,6 @@
 
 import MiniSearchbar from "../Components/Shared/MiniSearchbar/MiniSearchbar";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import LIghtDark from "../Components/Shared/LIghtDark";
 import { useState } from "react";
 import Logo from "../Components/Shared/Logo/Logo";
@@ -26,7 +26,9 @@ const DashboardLayout = () => {
             <div className="menu w-[350px] p-0 min-h-full bg-gray-500 flex flex-col text-gray-100">
               {/* Sidebar content here */}
               <div className="flex  items-center gap-3 justify-center px-5  bg-gray-400 h-[100px] md:mb-12 ">
+                <Link to="/">
                 <Logo />
+                </Link>
                 <div className="md:hidden">
                 <LIghtDark click={click} setClick={setClick}/>
                 </div>
