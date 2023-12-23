@@ -15,6 +15,15 @@ import Payment from "../Pages/Payment/Payment";
 import Favourites from "../Pages/Favourites/Favourites";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import Users from "../Pages/Dashboard/Users";
+import AllProducts from "../Pages/Dashboard/AllProducts";
+import AddItems from "../Pages/Dashboard/AddItems";
+import Orders from "../Pages/Dashboard/Orders";
+import Reviews from "../Pages/Dashboard/Reviews";
+import Transections from "../Pages/Dashboard/Transections";
+import Analytics from "../Pages/Dashboard/Analytics";
+import Settings from "../Pages/Dashboard/Settings";
 
 const Routers = createBrowserRouter([
     {
@@ -79,7 +88,45 @@ const Routers = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayout/>
+        element: <DashboardLayout/>,
+        children: [
+            {
+                path: "dashboard-home",
+                element: <DashboardHome/>
+            },
+            {
+                path: "all-products",
+                element: <AllProducts/>
+            },
+            {
+                path: "all-users",
+                element: <Users/>
+            },
+            {
+                path: "add-products",
+                element: <AddItems/>
+            },
+            {
+                path: "orders",
+                element: <Orders/>
+            },
+            {
+                path: "reviews",
+                element: <Reviews/>
+            },
+            {
+                path: "transections",
+                element: <Transections/>
+            },
+            {
+                path: "analytics",
+                element: <Analytics/>
+            },
+            {
+                path: "settings",
+                element: <Settings/>
+            },
+        ]
     }
 ])
 export default Routers;
