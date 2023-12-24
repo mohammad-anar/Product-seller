@@ -11,7 +11,6 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy";
 import Contact from "../Pages/Contact/Contact";
 import Blog from "../Pages/Blog/Blog";
 import Carts from "../Pages/Carts/Carts";
-import Payment from "../Pages/Payment/Payment";
 import Favourites from "../Pages/Favourites/Favourites";
 import ProductsDetails from "../Pages/ProductsDetails/ProductsDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -24,6 +23,8 @@ import Reviews from "../Pages/Dashboard/Reviews";
 import Transections from "../Pages/Dashboard/Transections";
 import Analytics from "../Pages/Dashboard/Analytics";
 import Settings from "../Pages/Dashboard/Settings";
+import PaymentSuccess from "../Pages/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Pages/PaymentFailed/PaymentFailed";
 
 const Routers = createBrowserRouter([
     {
@@ -56,10 +57,6 @@ const Routers = createBrowserRouter([
                 element: <Blog/>
             },
             {
-                path: "payment",
-                element: <Payment/>
-            },
-            {
                 path: "about",
                 element: <About/>
             },
@@ -70,6 +67,14 @@ const Routers = createBrowserRouter([
             {
                 path: "fa&q",
                 element: <Faq/>
+            },
+            {
+                path: "payment/success/:tranId",
+                element: <PaymentSuccess/>
+            },
+            {
+                path: "payment/fail/:tranId",
+                element: <PaymentFailed/>
             },
             {
                 path: "privacy-policy",

@@ -22,7 +22,6 @@ const Icons = () => {
   const quantity = products?.data?.data?.reduce((total, current) => {
     return (total = total + current?.quantity);
   }, 0);
-  console.log(user);
   return (
     <div className="flex items-center gap-8 text-2xl">
       <div className="dropdown dropdown-hover text-base text-black font-medium flex items-center gap-1">
