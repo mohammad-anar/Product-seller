@@ -90,7 +90,6 @@ const Icons = () => {
                   src={user?.photoURL}
                   alt="user image"
                 />
-                
               )}
             </div>
             <h2
@@ -99,12 +98,14 @@ const Icons = () => {
             >
               Dashboard
             </h2>
-            {!user && <h2
-              onClick={() => navigate("/login")}
-              className="mt-3 hover:bg-red-400  p-2 text-center font-bold duration-300 rounded-full bg-red-600 text-white  "
-            >
-              Login/Sign Up
-            </h2>}
+            {!user && (
+              <h2
+                onClick={() => navigate("/login")}
+                className="mt-3 hover:bg-red-400  p-2 text-center font-bold duration-300 rounded-full bg-red-600 text-white  "
+              >
+                Login/Sign Up
+              </h2>
+            )}
             {user && (
               <h2
                 onClick={() =>

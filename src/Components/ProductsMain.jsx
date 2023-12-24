@@ -51,7 +51,7 @@ const ProductsMain = () => {
   };
   const handleFavourite = (id) => {
     axiosSecure
-      .post("/favourites", { id })
+      .post("/favourites", { id, email: user.email })
       .then((res) => {
         console.log(res.data);
         if (res.data?.insertedId) {
