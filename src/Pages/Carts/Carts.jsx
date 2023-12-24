@@ -35,6 +35,7 @@ const Carts = () => {
         if (res.data?.deletedCount === 1) {
           refetch();
           toast.success(`deleted 🔥`);
+          refetch();
         }
       })
       .catch((err) => console.log(err));

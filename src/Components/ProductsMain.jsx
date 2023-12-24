@@ -39,7 +39,6 @@ const ProductsMain = () => {
     axiosSecure
       .post(`/carts?email=${user.email}`, { id })
       .then((res) => {
-        console.log(res.data);
         if (res.data?.insertedId) {
           toast.success("item added to cart 👌");
         }
@@ -53,7 +52,6 @@ const ProductsMain = () => {
     axiosSecure
       .post("/favourites", { id, email: user.email })
       .then((res) => {
-        console.log(res.data);
         if (res.data?.insertedId) {
           toast.success("item added to favourite 👌");
         }

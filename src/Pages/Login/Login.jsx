@@ -23,7 +23,8 @@ const Login = () => {
     signInUser(email, password)
     .then(res => {
       console.log(res.user);
-      toast.success("Login successfull 🔥")
+      toast.success("Login successfull 🔥");
+      navigate("/")
     }).catch(err=> {console.log(err);toast.error(err.message)})
   };
   const handleGoogleSignIn = () => {

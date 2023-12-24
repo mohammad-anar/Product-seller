@@ -12,12 +12,12 @@ const Icons = () => {
   const axiosSecure = useAxiosSecure();
   const { data: products, isLoading } = useQuery({
     queryKey: ["cartsquantity"],
+    enabled: !!user,
     queryFn: async () => {
       const res = await axiosSecure.get(`/carts?email=${user?.email}`);
       return res;
     },
     refetchInterval: 1000,
-    enabled: true,
   });
   const quantity = products?.data?.data?.reduce((total, current) => {
     return (total = total + current?.quantity);
