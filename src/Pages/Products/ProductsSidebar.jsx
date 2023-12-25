@@ -14,7 +14,7 @@ const ProductsSidebar = () => {
     },
   });
   const allProducts = data?.data?.result?.length > 6 && data?.data?.result?.slice(0, 5)
-  console.log(allProducts);
+  
   return (
     <div className="col-span-3">
       <div className="bg-[#f8f8f8] rounded-xl p-5 pb-8">
@@ -27,11 +27,11 @@ const ProductsSidebar = () => {
         {/* all cards here */}
         <div className="space-y-2">
           {/* card 1 */}
-          {!isLoading && allProducts?.map(product =><div key={product._id} className="max-w-sm bg-white p-4 cursor-pointer">
-            <div className="grid grid-cols-3 gap-4">
+          {!isLoading && allProducts?.map(product =><div key={product._id} className="w-full bg-white p-4 cursor-pointer">
+            <div className="grid grid-cols-3 items-center gap-4">
               <img
                 src={product?.image}
-                className="max-w-sm w-full lg:w-20 h-24 lg-h-20 rounded-lg bg-white"
+                className="max-w-sm w-full lg:w-20 h-24 sm:h-40 py-2 lg-h-20 rounded-lg bg-white"
               />
               <div className="col-span-2 space-y-2 ml-4">
                 <h1 className="text-base font-medium">{product?.product_name}</h1>

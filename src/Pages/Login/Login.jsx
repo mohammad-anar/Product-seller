@@ -49,7 +49,7 @@ const Login = () => {
       .catch((err) => console.log(err));
   };
     return (
-        <div className="px-12 flex flex-col items-center justify-center my-12">
+        <div className="px-5 md:px-12 flex flex-col items-center justify-center my-12">
           <form
             className="flex flex-col items-center py-12 px-8 shadow-md w-[320px] md:w-[450px] lg:w-[520px] mx-auto"
             onSubmit={handleSubmit(onSubmit)}

@@ -6,12 +6,12 @@ const LIghtDark = ({click, setClick}) => {
         <div className="flex items-center bg-slate-200 p-2 px-4 rounded-full gap-2">
             <IoSunny
               onClick={() => setClick(true)}
-              size={30}
+              size={20}
               className={`${click ? "text-blue-600" : "text-gray-600"} `}
             />
             <RiMoonClearFill
               onClick={() => setClick(false)}
-              size={25}
+              size={18}
               className={`${!click ? "text-blue-600" : "text-gray-600"} `}
             />
           </div>

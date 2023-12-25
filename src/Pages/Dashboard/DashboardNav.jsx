@@ -14,7 +14,7 @@ const DashboardNav = () => {
     const navigate = useNavigate();
   const { logOut, user } = useAuth();
     return (
-        <div className="navbar bg-gray-500 h-[100px] px-8">
+        <div className="navbar bg-gray-400 h-[100px] px-8 border-l border-red-200">
             <div className="flex-1">
             <div className="drawer-content flex flex-col items-center justify-center">
             {/* Page content here */}

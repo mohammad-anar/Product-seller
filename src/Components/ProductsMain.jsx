@@ -26,7 +26,9 @@ const ProductsMain = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["products", "carts", itemsPerPage, pageNumber],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/products?size=${itemsPerPage}&page=${pageNumber}`);
+      const res = await axiosPublic.get(
+        `/products?size=${itemsPerPage}&page=${pageNumber}`
+      );
       return res;
     },
   });
@@ -67,7 +69,7 @@ const ProductsMain = () => {
         {/* cards  */}
         {isLoading ? (
           <div className="flex items-center justify-center h-[70vh]">
-            <Loader />{" "}
+            <Loader />
           </div>
         ) : (
           <div className="flex flex-col ">
@@ -77,9 +79,9 @@ const ProductsMain = () => {
                 {products?.map((product) => (
                   <div
                     key={product._id}
-                    className="card  h-[350px] rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
+                    className="card  h-[400px] rounded-none bg-white w-full shadow-md hover:shadow-sm duration-300 mx-auto"
                   >
-                    <figure className="px-14 pt-5">
+                    <figure className="p-4 pt-8">
                       <img
                         src={product.image}
                         alt="image"
@@ -135,28 +137,39 @@ const ProductsMain = () => {
                         <div className="flex items-center w-full gap-10">
                           <img
                             src={product.image}
-                            className="max-w-sm w-72 h-60 p-2 rounded-lg bg-white"
+                            className="max-w-sm w-32 md:w-72 h-32 md:h-60 p-2 rounded-lg bg-white"
                           />
                           <div className=" space-y-2 ml-4 w-full">
-                            <h1 className="text-xl font-medium">
+                            <h1 className="text-base md:text-xl font-medium">
                               {product.product_name}
                             </h1>
                             <div>
                               <Rating
-                                style={{ maxWidth: 100 }}
+                                style={{ maxWidth: 80 }}
                                 value={product.rating}
                               />
                             </div>
-                            <div className="text-base">
+                            <div className="text-sm md:text-base">
                               <del className="text-gray-400">
-                                $ {product.price + (product.price * 20) / 100}
-                              </del>{" "}
-                              <span className="ml-2">$ {product.price}</span>
+                                $
+                                {product.price +
+                                  ((product.price * 20) / 100).toFixed(2)}
+                              </del>
+                              <span className="ml-2">
+                                $ {Number(product?.price + 0).toFixed(2)}
+                              </span>
                             </div>
                             <hr />
                             <div className="space-y-3">
-                              <p className="text-base text-gray-700">
-                                {product.description}
+                              <p className="text-sm md:text-base md:hidden text-gray-700">
+                                {product.description.length > 20
+                                  ? product.description.slice(0, 20) + "..."
+                                  : product?.description}
+                              </p>
+                              <p className="text-sm md:text-base text-gray-700 hidden md:block">
+                                {product.description.length > 200
+                                  ? product.description.slice(0, 200) + "..."
+                                  : product?.description}
                               </p>
                               <div className="flex items-start gap-2">
                                 <GrFavorite
@@ -189,7 +202,10 @@ const ProductsMain = () => {
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
               />
-              <select onChange={(e) => setItemPerPage(Number(e.target.value))} className="select select-bordered w-full max-w-[150px] bg-transparent focus:outline-offset-0">
+              <select
+                onChange={(e) => setItemPerPage(Number(e.target.value))}
+                className="select select-bordered w-full max-w-[150px] bg-transparent focus:outline-offset-0"
+              >
                 <option className="text-gray-400" disabled selected>
                   Item per page
                 </option>

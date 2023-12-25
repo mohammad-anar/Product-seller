@@ -38,7 +38,7 @@ const PaymentForm = ({ price, products_info }) => {
       .catch((err) => console.log(err));      
   };
   return (
-    <div className="px-12 flex flex-col items-center justify-center my-12 ">
+    <div className="px-5 md:px-12 flex flex-col items-center justify-center my-12 ">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center md:py-12 md:px-8 mx-auto"

@@ -7,7 +7,7 @@ const Pagination = ({ count, itemsPerPage, pageNumber, setPageNumber }) => {
   const pageArray = new Array(page);
   const totalPage = [...pageArray.keys()]
   return (
-    <div className="flex items-center gap-4 flex-wrap">
+    <div className="flex flex-col md:flex-row items-center gap-4 flex-wrap">
       <button onClick={() => {
         if(pageNumber > 0){
           setPageNumber(pageNumber - 1)

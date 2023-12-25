@@ -8,13 +8,13 @@ const CartTotal = ({ cartTotal, products_info }) => {
 
   
   return (
-    <div className="flex flex-col lg:flex-row items-start my-12 justify-around">
-      <div className="max-w-xl text-center bg-gray-100 p-12 px-20 rounded-xl mx-auto lg:mx-0">
-        <h2 className="text-4xl font-medium mb-8">Cart total</h2>
+    <div className="flex flex-col lg:flex-row items-start my-8 md:my-12 justify-around">
+      <div className="max-w-xl text-center bg-gray-100 p-12 px-4 md:px-20 rounded-xl mx-auto lg:mx-0">
+        <h2 className="text-2xl md:text-4xl font-medium mb-8">Cart total</h2>
         <div className="w-full bg-transparent">
           <table className="border border-gray-400 w-full">
             <tr className="border border-gray-400 h-12">
-              <td className="border border-gray-400 text-lg font-bold">
+              <td className="border border-gray-400 text-sm md:text-lg font-bold">
                 SubTotal
               </td>
               <td className="border border-gray-400 text-base">
@@ -22,7 +22,7 @@ const CartTotal = ({ cartTotal, products_info }) => {
               </td>
             </tr>
             <tr className="border border-gray-400 h-12 w-1/2">
-              <td className="border border-gray-400 text-lg font-bold">
+              <td className="border border-gray-400 text-sm md:text-lg font-bold">
                 Total
               </td>
               <td className="border border-gray-400 text-base">
@@ -51,7 +51,7 @@ const CartTotal = ({ cartTotal, products_info }) => {
             </button>
             {/* modal  */}
             <dialog id="my_modal_2" className="modal ">
-              <div className="modal-box w-11/12 max-w-5xl bg-white">
+              <div className="modal-box w-10/12 md:w-11/12 max-w-5xl  bg-white">
               {/* payment form  */}
                 <PaymentForm price={cartTotal?.toFixed(2)} products_info={products_info}/>
               </div>
